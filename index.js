@@ -12,20 +12,23 @@ const EnvironmentAPI = axios.create({
 $("#btn1").on("click", async () => {
   try {
     // The API call. API returns a promise, hence the use of async and await keyword
-    const response = await EnvironmentAPI.get("/2-hour-weather-forecast");
+    const response = await EnvironmentAPI.get("/air-temperature");
 
-    const records = response.data.items[0].forecasts;
+    const records = response.data.items[0].readings;
 
-    let tbodyEl = $("#targetElement"); // HTML Element where we will render data into
+    console.log(records);
 
-    // Loop through records
-    records.forEach((r) => {
+    // Loop through each record and display the data
+    records.forEach((element) => {
+      console.log(element.station_id, element.value);
+
+      // Loop through each record and display the data
       tbodyEl.append("<tr>");
       tbodyEl.append(
-        `<td class="whitespace-nowrap py-4 px-3 text-sm text-gray-500">${r.area}</td>`
+        `<td class="whitespace-nowrap py-4 px-3 text-sm text-gray-500">${element.station_id}</td>`
       );
       tbodyEl.append(
-        `<td class="whitespace-nowrap py-4 px-3 text-sm text-gray-500">${r.forecast}</td>`
+        `<td class="whitespace-nowrap py-4 px-3 text-sm text-gray-500">${element.value}</td>`
       );
       tbodyEl.append("</tr>");
     });
