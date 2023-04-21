@@ -23,6 +23,7 @@
       referrerpolicy="no-referrer"
     />
     <script defer src="./index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   </head>
   <body>
     <button
@@ -30,6 +31,12 @@
       class="bg-blue-500 text-white p-2 rounded-lg border border-black m-4"
     >
       Fetch Weather API
+    </button>
+    <button
+      id="btn2"
+      class="bg-blue-500 text-white p-2 rounded-lg border border-black m-4"
+    >
+      Fetch & Display Chart Weather API
     </button>
     <div
       id="message"
@@ -56,5 +63,54 @@
         <!-- Dynamically render data here -->
       </tbody>
     </table>
+    <div>
+      <div>
+        <canvas id="myChart" width="1600" height="900"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        getData();
+        async function getData() {
+          const response = await fetch(
+            "https://api.data.gov.sg/v1/environment/air-temperature"
+          );
+          const data = await response.json();
+          console.log(data);
+          length = data.items[0].readings.length;
+          console.log(length);
+          labels_0 = [];
+          values_0 = [];
+          for (i = 0; i < length; i++) {
+            labels_0.push(data.items[0].readings[i].station_id);
+            values_0.push(data.items[0].readings[i].value);
+          }
+
+          const ctx = document.getElementById("myChart");
+
+          new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: labels_0,
+              datasets: [
+                {
+                  label: "# Air Temperature",
+                  data: values_0,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+        }
+      </script>
+    </div>
   </body>
 </html>
