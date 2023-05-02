@@ -66,7 +66,22 @@
     </table>
     <div>
       <div>
-        <canvas id="myChart" width="1600" height="900"></canvas>
+        <canvas id="myChart" width="160" height="90"></canvas>
+      </div>
+      <div>
+        <canvas id="myChart1" width="160" height="90"></canvas>
+      </div>
+      <div>
+        <canvas id="myChart2" width="160" height="90"></canvas>
+      </div>
+      <div>
+        <canvas id="myChart3" width="160" height="90"></canvas>
+      </div>
+      <div>
+        <canvas id="myChart4" width="160" height="90"></canvas>
+      </div>
+      <div>
+        <canvas id="myChart5" width="160" height="90"></canvas>
       </div>
 
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -89,6 +104,11 @@
           }
 
           const ctx = document.getElementById("myChart");
+          const ctx1 = document.getElementById("myChart1");
+          const ctx2 = document.getElementById("myChart2");
+          const ctx3 = document.getElementById("myChart3");
+          const ctx4 = document.getElementById("myChart4");
+          const ctx5 = document.getElementById("myChart5");
 
           new Chart(ctx, {
             type: "bar",
@@ -99,6 +119,127 @@
                   label: "# Air Temperature",
                   data: values_0,
                   borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+
+          new Chart(ctx1, {
+            type: "line",
+            data: {
+              labels: labels_0,
+              datasets: [
+                {
+                  label: "# Air Temperature",
+                  data: values_0,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+
+          new Chart(ctx2, {
+            type: "doughnut",
+            data: {
+              labels: labels_0,
+              datasets: [
+                {
+                  label: "# Air Temperature",
+                  data: values_0,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+
+          new Chart(ctx3, {
+            type: "radar",
+            data: {
+              labels: labels_0,
+              datasets: [
+                {
+                  label: "# Air Temperature",
+                  data: values_0,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+
+          new Chart(ctx4, {
+            type: "bar",
+            data: {
+              labels: labels_0,
+              datasets: [
+                {
+                  label: "# Air Temperature",
+                  data: values_0,
+                  borderWidth: 1,
+                  type: "bar",
+                },
+
+                {
+                  label: "# Air Temperature 1",
+                  data: values_0,
+                  borderWidth: 1,
+                  type: "line",
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+
+          new Chart(ctx5, {
+            type: "bar",
+            data: {
+              labels: labels_0,
+              datasets: [
+                {
+                  label: "# Air Temperature",
+                  data: values_0,
+                  borderWidth: 1,
+                  type: "bar",
+                },
+
+                {
+                  label: "# Air Temperature 1",
+                  data: values_0,
+                  borderWidth: 1,
+                  type: "line",
                 },
               ],
             },
