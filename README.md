@@ -41,14 +41,11 @@ Provide proof that you have done testing on your project. You can provide step b
 instructions for the examiner to test the project. Use your user stories and their acceptance
 criteria as a starting point. Do note that any unhandled exceptions, console errors etc will
 be considered as failing the testing criteria.
-1. Test that user can sign in
-a. From the home page, click on the 'Login' button
-b. Fill in a valid username and password and click on the 'Login'
-button c. The user should be redirected to the profile page
-2. Test user entering an invalid password
-a. From the home page, click on the 'Login' button
-b. FIll in a valid username but an invalid password, and click on the 'Login'
-button c. The user should be informed that the login has failed.
+1. Test that user can toggle Light/Dark Mode
+a. From the page, click on the 'Toggle for Light/Dark Mode' checkbox
+b. The page will togle between a black/white background with white/black fonts, legends and grid lines as reflected in the charts.
+2. Test select box in the Payload Sensor Reading chart
+a. The chart will be regenerated with the relevant dataset associated with the select box option
 # DEPLOYMENT
 Describe the process that you used to host your website on a hosting platform (such as Github
 pages or Heroku). Provide the following details:
