@@ -11,11 +11,11 @@ explain the content so that the reader can understand it.
 
 # UX/UI
 This section should:
-*List down the user stories and their acceptance criteria.
-*Share links to wireframes, mockups, diagrams that are used in the UI/UX processes.
+* List down the user stories and their acceptance criteria.
+* Share links to wireframes, mockups, diagrams that are used in the UI/UX processes.
 Those files can be pushed to the Github repository, or be placed in a separate PDF file
 as part of the repository.
-*Describe what your considerations were for the Five Planes of UI/UX, such as the choice
+* Describe what your considerations were for the Five Planes of UI/UX, such as the choice
 of color and fonts for the surface plane, or information organization strategy for the
 structure plane.
 # FEATURES
@@ -27,7 +27,7 @@ them here.
 If you wish to present the features list in a form more suitable for software development, you
 can write them as user stories instead.
 A basic user story consists of:
-*The role, or type of the user
-*A statement describing what the user wishes to a
-*A statement describing the intent of the user
-*Explain what features in your application can meet this particular user story.
+* The role, or type of the user
+* A statement describing what the user wishes to a
+* A statement describing the intent of the user
+* Explain what features in your application can meet this particular user story.
