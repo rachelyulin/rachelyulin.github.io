@@ -53,7 +53,7 @@ button c. The user should be informed that the login has failed.
 Describe the process that you used to host your website on a hosting platform (such as Github
 pages or Heroku). Provide the following details:
 1. What is your hosting platform?
-* Github Pages
+    * Github Pages
 3. How is the database hosted?
 4. What are the environment variables and what are they responsible for?
 5. What are the dependencies that your project used?
