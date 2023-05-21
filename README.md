@@ -2,7 +2,7 @@
 Begin with your project name, and a summary of what your project is about. Briefly describe
 the motivations of the owners who kickstarted this project. Treat it as an elevator pitch for your
 project.
-*Describe the context of your project. If the project is based on a complex premise,
+ Markup : *Describe the context of your project. If the project is based on a complex premise,
 explain the content so that the reader can understand it.
 *Describe each target audience group and their characteristics
 *Describe the user goals and the organization's goals
