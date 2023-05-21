@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Data</title>
+    <title>Robot Data</title>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"
       integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
@@ -25,20 +25,39 @@
     />
     <script defer src="./index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <style>
+      .darkmode {
+        color: white;
+      }
+      .bg-black {
+        background-color: rgb(0 0 0);
+      }
+      .bg-white {
+        background-color: rgb(255 255 255);
+      }
+      .header-h1{
+        color: white;        
+        font-weight: normal;
+      }
+    </style>
   </head>
-  <body>
+  <h1 id = "h1Color" style="font-size:3vw" align="center">Robot Dashboard</h1>
+  <body id = "mainbgColor">
     <button
       id="btn1"
       class="bg-blue-500 text-white p-2 rounded-lg border border-black m-4"
+      hidden
     >
       Fetch Weather API
     </button>
     <button
       id="btn2"
       class="bg-blue-500 text-white p-2 rounded-lg border border-black m-4"
+      hidden
     >
       Fetch & Display Chart Weather API
     </button>
+    <input type="checkbox" id="checkboxcolour" name="colour"><span id="checkboxText" class="">Toggle for Light/Dark Mode</span>
     <div
       id="message"
       class="bg-red-100 border-red-300 border-2 m-2 hidden"
@@ -50,13 +69,13 @@
             scope="col"
             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
           >
-            Area
+            
           </th>
           <th
             scope="col"
             class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
           >
-            Temperature
+            
           </th>
         </tr>
       </thead>
@@ -68,26 +87,34 @@
       <div class="grid gap-x-10 gap-y-28 grid-cols-4">
         <div
           class="chart-container"
-          style="position: relative; height: 10vh; width: 20vw"
+          style="position: relative; height: 10vh; width: 20vw"          
         >
-          <div>
-            <canvas id="myChart" width="160" height="90"></canvas>
+          <div id = "backgroundColorChart">
+            <canvas id="myChart" width="160" height="90"></canvas>            
           </div>
         </div>
         <div
           class="chart-container"
           style="position: relative; height: 10vh; width: 20vw"
         >
-          <div>
+          <div id = "backgroundColorChart1">
             <canvas id="myChart1" width="160" height="90"></canvas>
-          </div>
+          </div>          
         </div>
         <div
           class="chart-container"
           style="position: relative; height: 10vh; width: 20vw"
         >
-          <div>
+          <div id = "backgroundColorChart2">
             <canvas id="myChart2" width="160" height="90"></canvas>
+          </div>
+          <div>
+            <select name="selectBox" id="coffeesales">
+            <option value="">Choose Here</option>
+            <option value="0">Air Temp Sensors</option>
+            <option value="1">Wind Speed Sensors</option>
+            <option value="2">Relative Humidity Sensors</option>
+            </select>
           </div>
         </div>
 
@@ -95,7 +122,7 @@
           class="chart-container"
           style="position: relative; height: 10vh; width: 20vw"
         >
-          <div>
+          <div id = "backgroundColorChart3">
             <canvas id="myChart3" width="160" height="90"></canvas>
           </div>
         </div>
@@ -103,7 +130,7 @@
           class="chart-container"
           style="position: relative; height: 20vh; width: 20vw"
         >
-          <div>
+          <div id = "backgroundColorChart4">
             <canvas id="myChart4" width="160" height="90"></canvas>
           </div>
         </div>
@@ -111,7 +138,7 @@
           class="chart-container"
           style="position: relative; height: 20vh; width: 20vw"
         >
-          <div padding: 50px;>
+          <div id = "backgroundColorChart5" padding: 50px;>
             <canvas id="myChart5" width="160" height="90"></canvas>
           </div>
         </div>
@@ -119,8 +146,9 @@
     
 
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+      
       <script>
+        
         getData();
         async function getData() {
           const response = await fetch(
@@ -137,111 +165,234 @@
             values_0.push(data.items[0].readings[i].value);
           }
 
+          const response1 = await fetch(
+            "https://api.data.gov.sg/v1/environment/wind-speed"
+          );
+          const data1 = await response1.json();
+          console.log(data1);
+          length1 = data1.items[0].readings.length;
+          console.log(length1);
+          labels_1 = [];
+          values_1 = [];
+          for (a = 0; a < length1; a++) {
+            labels_1.push(data1.items[0].readings[a].station_id);
+            values_1.push(data1.items[0].readings[a].value);
+          }
+
+          const response2 = await fetch(
+            "https://api.data.gov.sg/v1/environment/relative-humidity"
+          );
+          const data2 = await response2.json();
+          console.log(data2);
+          length2 = data2.items[0].readings.length;
+          console.log(length2);
+          labels_2 = [];
+          values_2 = [];
+          for (b = 0; b < length2; b++) {
+            labels_2.push(data2.items[0].readings[b].station_id);
+            values_2.push(data2.items[0].readings[b].value);
+          }
+
           const ctx = document.getElementById("myChart");
           const ctx1 = document.getElementById("myChart1");
           const ctx2 = document.getElementById("myChart2");
           const ctx3 = document.getElementById("myChart3");
           const ctx4 = document.getElementById("myChart4");
           const ctx5 = document.getElementById("myChart5");
-
-          new Chart(ctx, {
+          
+          const chart0 = new Chart(ctx, {
             type: "bar",
             data: {
-              labels: labels_0,
+              labels: labels_1,
               datasets: [
                 {
-                  label: "# Air Temperature",
-                  data: values_0,
+                  label: "# Energy Consumption (%)",
+                  data: values_1,
                   borderWidth: 1,
                 },
               ],
             },
             options: {
+              plugins: {
+                title: {
+                    display: true,
+                    text: 'Servo Motors Energy Consumption (%)'
+                }
+              },
               scales: {
+                x: {
+                  beginAtZero: true,
+                  grid: {
+                    color: 'grey'
+                  }
+                },
                 y: {
                   beginAtZero: true,
+                  grid: {
+                    color: 'grey'
+                  }
                 },
               },
             },
           });
 
-          new Chart(ctx1, {
+          const chart1 = new Chart(ctx1, {
             type: "line",
             data: {
               labels: labels_0,
               datasets: [
                 {
-                  label: "# Air Temperature",
+                  label: "# Temperature",
                   data: values_0,
                   borderWidth: 1,
                 },
               ],
             },
             options: {
+              plugins: {
+                title: {
+                    display: true,
+                    text: 'Servo Motors Temperature (°C)'
+                }
+              },
               scales: {
+                x: {
+                  beginAtZero: true,
+                  grid: {
+                    color: 'grey'
+                  }
+                },
                 y: {
                   beginAtZero: true,
+                  grid: {
+                    color: 'grey'
+                  }
                 },
               },
             },
           });
 
-          new Chart(ctx2, {
+          const chart2 = new Chart(ctx2, {
             type: "doughnut",
             data: {
-              labels: labels_0,
+              labels: labels_2,
               datasets: [
                 {
-                  label: "# Air Temperature",
-                  data: values_0,
+                  label: "# Payload Sensors' Readings",
+                  data: values_2,
                   borderWidth: 1,
                 },
               ],
             },
             options: {
+              plugins: {
+                title: {
+                    display: true,
+                    text: 'Payload Sensors Readings'
+                }
+              },
               scales: {
                 y: {
                   beginAtZero: true,
+                  display: false,
+                  grid: {
+                    color: 'grey'
+                  }                  
                 },
               },
             },
           });
 
-          new Chart(ctx3, {
+          const chart3 = new Chart(ctx3, {
             type: "radar",
             data: {
               labels: labels_0,
               datasets: [
                 {
-                  label: "# Air Temperature",
+                  label: "# Transmission Power (Watts)",
                   data: values_0,
                   borderWidth: 1,
                 },
               ],
             },
             options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                },
+              plugins: {
+                title: {
+                    display: true,
+                    text: 'Radio Nodes Freq Transmission Power (Watts)'
+                }
               },
+              scales: {
+                r: {
+                  angleLines: {
+                    color: 'grey'
+                  },
+                  grid: {
+                    color: 'grey'
+                  }
+                }                 
+              }
             },
           });
 
-          new Chart(ctx4, {
+          const chart4 = new Chart(ctx4, {
             type: "bar",
             data: {
               labels: labels_0,
               datasets: [
                 {
-                  label: "# Air Temperature",
+                  label: "# S.Motors Temperature (°C)",
                   data: values_0,
                   borderWidth: 1,
                   type: "bar",
                 },
 
                 {
-                  label: "# Air Temperature 1",
+                  label: "# S.Motors Efficiency",
+                  data: values_2,
+                  borderWidth: 1,
+                  type: "line",
+                },
+              ],
+            },
+            options: {
+              plugins: {
+                title: {
+                    display: true,
+                    text: 'Servo Motors Efficiency VS Servo Motors Temperature (°C)'
+                }
+              },
+              scales: {
+                x: {
+                  beginAtZero: true,
+                  grid: {
+                    color: 'grey'
+                  }
+                },
+                y: {
+                  beginAtZero: true,
+                  grid: {
+                    color: 'grey'
+                  }
+                },
+              },
+            },
+          });
+
+          const chart5 = new Chart(ctx5, {
+            type: "bar",
+            data: {
+              labels: labels_0,
+              datasets: [
+                {
+                  label: "# S.Motors Run Time (Mins)",
+                  data: values_0,
+                  borderWidth: 1,
+                  type: "bar",
+                },
+
+                {
+                  label: "# S.Motors Temperature (°C)",
                   data: values_0,
                   borderWidth: 1,
                   type: "line",
@@ -249,43 +400,169 @@
               ],
             },
             options: {
+              plugins: {
+                title: {
+                    display: true,
+                    text: 'Servo Motors Run Time VS Servo Motors Temperature (°C)'
+                }
+              },
               scales: {
+                x: {
+                  beginAtZero: true,
+                  grid: {
+                    color: 'grey'
+                  }
+                },
                 y: {
                   beginAtZero: true,
+                  grid: {
+                    color: 'grey'
+                  }                 
                 },
               },
             },
           });
 
-          new Chart(ctx5, {
-            type: "bar",
-            data: {
-              labels: labels_0,
-              datasets: [
-                {
-                  label: "# Air Temperature",
-                  data: values_0,
-                  borderWidth: 1,
-                  type: "bar",
-                },
+          const checkboxcolour = document.getElementById('checkboxcolour');
+          checkboxcolour.addEventListener('change', darkMode);
+          
+          function darkMode() {
+            console.log(checkboxcolour.checked);
+            // const x = chart2.config.options.scales.x;
+            // const y = chart2.config.options.scales.y;
+            const bgColorChart = document.getElementById('backgroundColorChart');
+            const bgColorChart1 = document.getElementById('backgroundColorChart1');
+            const bgColorChart2 = document.getElementById('backgroundColorChart2');
+            const bgColorChart3 = document.getElementById('backgroundColorChart3');
+            const bgColorChart4 = document.getElementById('backgroundColorChart4');
+            const bgColorChart5 = document.getElementById('backgroundColorChart5');
 
-                {
-                  label: "# Air Temperature 1",
-                  data: values_0,
-                  borderWidth: 1,
-                  type: "line",
-                },
-              ],
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                },
-              },
-            },
-          });
+            if (checkboxcolour.checked === true) {
+              // chart2.options.scales.x.grid.borderColor = 'white';
+              Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(150, 150, 150, 0.8)';
+
+              bgColorChart.style.backgroundColor = 'black';
+              chart0.options.scales.x.grid.borderColor = 'white';
+              chart0.options.scales.x.grid.color = 'rgba(255, 255, 255, 0.5)';
+              chart0.options.scales.y.grid.borderColor = 'white';
+              chart0.options.scales.y.grid.color = 'rgba(255, 255, 255, 0.5)';
+              Chart.defaults.color = 'white';
+              
+              bgColorChart1.style.backgroundColor = 'black';
+              chart1.options.scales.x.grid.borderColor = 'white';
+              chart1.options.scales.x.grid.color = 'rgba(255, 255, 255, 0.5)';
+              chart1.options.scales.y.grid.borderColor = 'white';
+              chart1.options.scales.y.grid.color = 'rgba(255, 255, 255, 0.5)';
+
+              bgColorChart2.style.backgroundColor = 'black';
+              chart2.options.scales.y.grid.borderColor = 'white';
+              chart2.options.scales.y.grid.color = 'rgba(255, 255, 255, 0.5)';
+
+              bgColorChart3.style.backgroundColor = 'black';
+              chart3.options.scales.r.grid.borderColor = 'white';
+              chart3.options.scales.r.grid.color = 'rgba(255, 255, 255, 0.5)';
+              chart3.options.scales.r.angleLines.color = 'rgba(255, 255, 255, 0.5)';
+
+              bgColorChart4.style.backgroundColor = 'black';
+              chart4.options.scales.x.grid.borderColor = 'white';
+              chart4.options.scales.x.grid.color = 'rgba(255, 255, 255, 0.5)';
+              chart4.options.scales.y.grid.borderColor = 'white';
+              chart4.options.scales.y.grid.color = 'rgba(255, 255, 255, 0.5)';
+
+              bgColorChart5.style.backgroundColor = 'black';
+              chart5.options.scales.x.grid.borderColor = 'white';
+              chart5.options.scales.x.grid.color = 'rgba(255, 255, 255, 0.5)';
+              chart5.options.scales.y.grid.borderColor = 'white';
+              chart5.options.scales.y.grid.color = 'rgba(255, 255, 255, 0.5)';
+              
+              document.getElementById('h1Color').classList.add('header-h1');
+              document.getElementById('mainbgColor').classList.add('bg-black');
+              document.getElementById('checkboxText').classList.add('darkmode');
+            }
+            if (checkboxcolour.checked === false) {
+              Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+
+              bgColorChart.style.backgroundColor = 'white';
+              chart0.options.scales.x.grid.borderColor = '#666';
+              chart0.options.scales.x.grid.color = 'rgba(0, 0, 0, 0.1)';
+              chart0.options.scales.y.grid.borderColor = '#666';
+              chart0.options.scales.y.grid.color = 'rgba(0, 0, 0, 0.1)';
+              Chart.defaults.color = '#666';
+              
+              bgColorChart1.style.backgroundColor = 'white';
+              chart1.options.scales.x.grid.borderColor = '#666';
+              chart1.options.scales.x.grid.color = 'rgba(0, 0, 0, 0.1)';
+              chart1.options.scales.y.grid.borderColor = '#666';
+              chart1.options.scales.y.grid.color = 'rgba(0, 0, 0, 0.1)';
+
+              bgColorChart2.style.backgroundColor = 'white';
+              chart2.options.scales.y.grid.borderColor = '#666';
+              chart2.options.scales.y.grid.color = 'rgba(0, 0, 0, 0.1)';              
+
+              bgColorChart3.style.backgroundColor = 'white';
+              chart3.options.scales.r.grid.borderColor = '#666';
+              chart3.options.scales.r.grid.color = 'rgba(0, 0, 0, 0.1)';
+              chart3.options.scales.r.angleLines.color = 'rgba(0, 0, 0, 0.1)';
+
+              bgColorChart4.style.backgroundColor = 'white';
+              chart4.options.scales.x.grid.borderColor = '#666';
+              chart4.options.scales.x.grid.color = 'rgba(0, 0, 0, 0.1)';
+              chart4.options.scales.y.grid.borderColor = '#666';
+              chart4.options.scales.y.grid.color = 'rgba(0, 0, 0, 0.1)';
+
+              bgColorChart5.style.backgroundColor = 'white';
+              chart5.options.scales.x.grid.borderColor = '#666';
+              chart5.options.scales.x.grid.color = 'rgba(0, 0, 0, 0.1)';
+              chart5.options.scales.y.grid.borderColor = '#666';
+              chart5.options.scales.y.grid.color = 'rgba(0, 0, 0, 0.1)';
+
+              document.getElementById('h1Color').classList.remove('header-h1');
+              document.getElementById('mainbgColor').classList.remove('bg-black');
+              document.getElementById('checkboxText').classList.remove('darkmode');
+            }
+
+            chart0.update();
+            chart1.update();
+            chart2.update();
+            chart3.update();
+            chart4.update();
+            chart5.update();
+          }
+
+          const coffeesales = document.getElementById('coffeesales');
+          coffeesales.addEventListener('change', salesTracker);
+
+          function salesTracker () {
+            console.log(coffeesales.value);
+            if(coffeesales.value == 0) {
+              chart2.data.datasets[0].data = values_0;
+              chart2.data.labels = labels_0;
+              chart2.update();
+            }
+            if(coffeesales.value == 1) {
+              chart2.data.datasets[0].data = values_1;
+              chart2.data.labels = labels_1;
+              chart2.update();
+            }
+            if(coffeesales.value == 2) {
+              chart2.data.datasets[0].data = values_2;
+              chart2.data.labels = labels_2;
+              chart2.update();
+            }
+            else {
+              //chart2.data.datasets[0].data = values_0;
+              console.log(values_1);
+            }
+            // console.log(myChart2.data.datasets[0].type); Not working and should change to chart2 instead
+            // chart2.data.datasets[0].data = values_1;
+            // console.log(values_1);
+            chart2.update();          
         }
+
+        
+
+        }
+        
       </script>
     </div>
   </body>
