@@ -1,4 +1,3 @@
-# Documentation
 # PROJECT NAME AND SUMMARY
 Begin with your project name, and a summary of what your project is about. Briefly describe
 the motivations of the owners who kickstarted this project. Treat it as an elevator pitch for your
