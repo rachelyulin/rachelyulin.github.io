@@ -4,7 +4,7 @@ the motivations of the owners who kickstarted this project. Treat it as an eleva
 project.
  * Describe the context of your project. If the project is based on a complex premise,
 explain the content so that the reader can understand it.
-  * Hello
+   * Hello
 * Describe each target audience group and their characteristics
 * Describe the user goals and the organization's goals
 * Make sure to justify why the project should exists
