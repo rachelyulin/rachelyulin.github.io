@@ -54,10 +54,14 @@ Describe the process that you used to host your website on a hosting platform (s
 pages or Heroku). Provide the following details:
 1. What is your hosting platform?
     * Github Pages
-3. How is the database hosted?
-4. What are the environment variables and what are they responsible for?
+2. How is the database hosted?
+    * No Database
+3. What are the environment variables and what are they responsible for?
+    * No environment variables
 5. What are the dependencies that your project used?
-6. What are the deployment steps for the project?
+    * No dependencies
+7. What are the deployment steps for the project?
+    * Hosted by Github Page, accesible via Link
 You can provide deployment details in a separate document (PDF or another markdown file).
 There is no need to be original for this section; if another website or document have the
 steps, just link there and acknowledge the author in your credits,
