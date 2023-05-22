@@ -1,23 +1,32 @@
 # PROJECT NAME AND SUMMARY
-Begin with your project name, and a summary of what your project is about. Briefly describe
+* Begin with your project name, and a summary of what your project is about. Briefly describe
 the motivations of the owners who kickstarted this project. Treat it as an elevator pitch for your
 project.
-* Describe the context of your project. If the project is based on a complex premise,
-explain the content so that the reader can understand it.
+  * Project Name: Robot Dashboard
+  * Summary: The robot dashboard is for robot operators to monitor the overall statuses of the motors, sensors and radio communication readings in a single page. This dashboard will be beneficial for operators to see the robot system heath status and quickly identify if there are abnormalities in the robot system. Once identified, users can immediately contact the maintenance team for rectification.
+* Describe the context of your project. If the project is based on a complex premise, explain the content so that the reader can understand it.
+  * The dashboard will be implemented in a command and control base station, commonly situated at user's headquarters, where the user can remotely view the robot status. The robot will be deployed at another location for its mission.
 * Describe each target audience group and their characteristics
+  * The target audience group will be users will have some technical background, with age group from 18 to 35 having formal education.
 * Describe the user goals and the organization's goals
+  * User goals would be to ensure robot is operationally-ready for any mission and identify if there are abnormalities in the robot system when it arises.
 * Make sure to justify why the project should exists
-* Include a URL to the deployed version of your project
+* Include a URL to the deployed version of your project 
+  * Link: https://rachelyulin.github.io/
 
 # UX/UI
 This section should:
 * List down the user stories and their acceptance criteria.
+  * Robot operator is to check on robot's heath statuses of the various motors, sensor payloads and radio comms power readings. User can access the various charts containing the data. The user can access the sensor payload chart that shows the selected sensor data. Below the chart, there is a dropdown select option to select and view/toggle to other payload sensor readings.
+  * Robot operator may view the dashboard in a day/night setting or have certain colour preferences. The dashboard has a checkbox option to toggle between light/dark mode, that influences the background and font colours.
 * Share links to wireframes, mockups, diagrams that are used in the UI/UX processes.
 Those files can be pushed to the Github repository, or be placed in a separate PDF file
 as part of the repository.
+  * Link to wireframe: https://www.figma.com/file/95kMpeaftQe4LqzVjXZ3He/Untitled?type=design&node-id=1-2
 * Describe what your considerations were for the Five Planes of UI/UX, such as the choice
 of color and fonts for the surface plane, or information organization strategy for the
 structure plane.
+
 # FEATURES
 List down the major features of your application, and also the algorithms that you have used
 to implement those features. If there are any limitations or bugs, please describe them as well.
