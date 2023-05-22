@@ -5,7 +5,7 @@ project.
   * Project Name: Robot Dashboard
   * Summary: The robot dashboard is for robot operators to monitor the overall statuses of the motors, sensors and radio communication readings in a single page. This dashboard will be beneficial for operators to see the robot system heath status and quickly identify if there are abnormalities in the robot system. Once identified, users can immediately contact the maintenance team for rectification.
 * Describe the context of your project. If the project is based on a complex premise, explain the content so that the reader can understand it.
-  * The dashboard will be implemented in a command and control base station, commonly situated at user's headquarters, where the user can remotely view the robot status. The robot will be deployed at another location for its mission.
+  * The dashboard will be implemented in a command and control base station, commonly situated at user's headquarters, where the user can remotely view the robot status. The robot will be deployed at another area of operation for its mission.
 * Describe each target audience group and their characteristics
   * The target audience group will be users will have some technical background, with age group from 18 to 35 having formal education.
 * Describe the user goals and the organization's goals
