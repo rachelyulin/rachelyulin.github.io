@@ -23,7 +23,8 @@ List down the major features of your application, and also the algorithms that y
 to implement those features. If there are any limitations or bugs, please describe them as well.
 If you have any features pending implementation, you can also take the opportunity to discuss
 them here.
-* The main features in the dashboard would be the light/dark mode and the dropdown selection option, that utilises the darkmode function and salesTracker function respectively. For future implementation, it would be more beneficial to have a database to hold and store historial and live values. With these data, machine learning can be applied to provide predictive maintenance and analytics of motors and sensors.
+* The main features in the dashboard would be the light/dark mode and the dropdown selection option, that utilises the darkmode function and salesTracker function respectively. 
+* For future implementation, it would be more beneficial to have a database to hold and store historial and live values. With these data, machine learning can be applied to provide predictive maintenance and analytics of motors and sensors.
 # USER STORIES
 If you wish to present the features list in a form more suitable for software development, you
 can write them as user stories instead.
