@@ -52,10 +52,10 @@ criteria as a starting point. Do note that any unhandled exceptions, console err
 be considered as failing the testing criteria.
 * Test Cases:
 1. Test that user can toggle Light/Dark Mode
-   a. From the page, click on the 'Toggle for Light/Dark Mode' checkbox
-   b. The page will togle between a black/white background with white/black fonts, legends and grid lines as reflected in the charts.
+   * a. From the page, click on the 'Toggle for Light/Dark Mode' checkbox
+   * b. The page will togle between a black/white background with white/black fonts, legends and grid lines as reflected in the charts.
 2. Test select box in the Payload Sensor Reading chart
-   a. The chart will be regenerated with the relevant dataset associated with the select box option
+   * a. The chart will be regenerated with the relevant dataset associated with the select box option
 # DEPLOYMENT
 Describe the process that you used to host your website on a hosting platform (such as Github
 pages or Heroku). Provide the following details:
